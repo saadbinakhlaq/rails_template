@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsAuth</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <%= render "shared/navbar_authenticated" %>
+    <div class="flex h-screen bg-gray-100">
+      <!-- sidebar -->
+      <%= render "shared/sidebar" %>
+
+      <!-- Main content -->
+      <div class="flex flex-col flex-1 overflow-y-auto bg-white">
+          <%= render 'shared/alerts' %>
+          <div class="p-6 mx-auto md:w-full">
+            <div class="overflow-hidden">
+              <%= yield %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

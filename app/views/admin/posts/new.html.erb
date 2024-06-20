@@ -1,0 +1,30 @@
+<%= form_for @post, url: admin_posts_path, html: { class: "w-full max-w-2xl mx-auto" } do |form| %>
+  <div class="-mx-3 mb-6">
+    <div class="w-full px-3 mb-6 md:mb-0">
+      <%= form.label :title, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+      <%= form.text_field(
+            :title,
+            class: "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" + "#{border_error(@profile.errors.messages[:first_name].present?)}",
+                  
+            placeholder: "Whats happening!")
+      %>
+      <% if @post.errors.messages[:title].present? %>
+        <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+      <% end %>
+    </div>
+    <div class="w-full px-3 mb-6 md:mb-0">
+      <%= form.label :description, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+      <%= form.text_area(
+          :description,
+          class: "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" + "#{border_error(@profile.errors.messages[:last_name].present?)}",
+          rows: 10,
+          placeholder: "Hey folks ...") %>
+      <% if @post.errors.messages[:description].present? %>
+        <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <%= form.submit "Save", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+<% end %>
